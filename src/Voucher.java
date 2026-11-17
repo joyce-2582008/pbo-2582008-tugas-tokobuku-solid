@@ -10,9 +10,10 @@ public class Voucher implements MetodeBayar {
         return "Voucher " + Buku.formatRupiah(nilai);
     }
 
-    // Ketentuan 5 awal: tulis dulu return totalBelanja - nilai;
+    // Hasil uji coba sebelum perbaikan (melanggar kontrak LSP):
+    // Voucher Rp100.000    : Rp-36.000
     @Override
     public int totalBayar(int totalBelanja) {
-        return totalBelanja - nilai;
+        return Math.max(0, totalBelanja - nilai);
     }
 }
